@@ -6,40 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculatron</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <div class="container">
-        <h1 class="display">This is supposed to have numbers</h1>
+        <h1 class="display"></h1>
         <!--will need to add padding and background color.
         maybe consider making it a p element?-->
+        <div class = 'inputs'>
+        <div class="numbers">
         <div class="top-row">
-            <div class="number button" id="7">7</div>
-            <div class="number button" id="8">8</div>
-            <div class="number button" id="9">9</div>
+            <button type="button" class="number button" id="7">7</button>
+            <button type="button" class="number button" id="8">8</button>
+            <button type ='button' class="number button" id="9">9</button>
         </div>
 
         <div class="middle-row">
-            <div class="number button" id="4">4</div>
-            <div class="number button" id="5">5</div>
-            <div class="number button" id="6">6</div>
+            <button type='button' class="number button" id="4">4</button>
+            <button type='button' class="number button" id="5">5</button>
+            <button type="button" class="number button" id="6">6</button>
         </div>
 
         <div class="bottom-row">
-            <div class="number button" id="1">1</div>
-            <div class="number button" id="2">2</div>
-            <div class="number button" id="3">3</div>
+            <button type="'button" class="number button" id="1">0</button>
+            <button type="button" class="number button" id="1">1</button>
+            <button type="button" class="number button" id="2">2</button>
+            <button type="button" class="number button" id="3">3</button>
+        </div>
         </div>
 
         <div class="operators">
-            <div class="math button" id="clear">clear</div>
-            <div class="math button" id="add">+</div>
-            <div class="math button" id="subtract">-</div>
-            <div class="math button" id="multiply">x</div>
-            <div class="math button" id="divide">/</div>
-            <div class="math button" id="equate">=</div>
+            <button type="'button" class="math button" id="clear">clear</button>
+            <button type="'button"  class="math button" id="add">+</button>
+            <button type="'button"  class="math button" id="subtract">-</button>
+            <button type="'button"  class="math button" id="multiply">x</button>
+            <button type="'button"  class="math button" id="divide">/</button>
+            <button type="'button"  class="math button" id="equate">=</button>
         </div>
-
+    </div>
 
 
 

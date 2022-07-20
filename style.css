@@ -19,6 +19,7 @@
     margin-right: auto;
 }
 
+
 .button {
     border: solid;
     border-radius: 10px;
@@ -26,23 +27,71 @@
     background-color: gray;
     text-align: center;
     font-size: 20px;
+   
+
+    
 }
 
-.top-row {
+.math {
+    background-color: aqua;
+    /*these properties will overlap the button for any element sharing button and math*/
+}
+
+.inputs {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    height: 80%;
+   
+}
+
+.numbers {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70%; 
+}
+
+
+
+.top-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 10px;;
     
 }
 
 .middle-row {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 10px;;
+  
+  
 }
 
 .bottom-row {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 10px;;
+  
+   
+}
+
+.number{
+  
 }
 
 .operators {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:30%
+    
+}
+
+#clear {
+    background-color: orange;
 }
 
 
