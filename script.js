@@ -29,6 +29,17 @@ output.textContent = currdis;
 let answer;
 //use to update the display while running functions?
 
+//gives the button a 'popup' effect
+buttons.forEach((btn) => {
+    btn.addEventListener('mouseover', () => {
+        btn.classList.add('enlarge');
+    });
+    btn.addEventListener('mouseout', () => {
+        btn.classList.remove('enlarge');
+    });
+});
+
+
 let num = ''
 
 numbers.forEach((numButton) => {
