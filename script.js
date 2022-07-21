@@ -22,6 +22,7 @@ const operators = document.querySelectorAll('.math');
 const output = document.querySelector('.display');
 const buttons = document.querySelectorAll('.button');
 const equate = document.querySelector('#equate');
+const clear = document.querySelector('#clear');
 
 let workingVals = [];
 let currdis = 0
@@ -31,10 +32,10 @@ let answer;
 
 //gives the button a 'popup' effect
 buttons.forEach((btn) => {
-    btn.addEventListener('mouseover', () => {
+    btn.addEventListener('mousedown', () => {
         btn.classList.add('enlarge');
     });
-    btn.addEventListener('mouseout', () => {
+    btn.addEventListener('mouseup', () => {
         btn.classList.remove('enlarge');
     });
 });
@@ -45,6 +46,7 @@ let num = ''
 numbers.forEach((numButton) => {
     numButton.addEventListener('click', () => {
             num += numButton.id;
+            output.textContent = num;
     });
 });
   
@@ -70,11 +72,16 @@ operators.forEach((opButton) => {
 equate.addEventListener('click', () => {
     output.textContent = workingVals.reduce((total, c) => 
     operate(total, c, opfunc));
-    num = workingVals.reduce((total, c) => 
-    operate(total, c, opfunc));
-    answer = num;
+    //num = workingVals.reduce((total, c) => 
+    //operate(total, c, opfunc));
+    //answer = num;
     workingVals = [];
-})     
+})  ;   
 
+clear.addEventListener('click', () => {
+    workingVals = [];
+    num='';
+    output.textContent = 0;
+});
 
  //output.textContent = numButton.id;
