@@ -13,7 +13,6 @@ function multiply(x, y) {
 function divide(x, y) {
     return x/y;
 }
-
 function operate(x, y, op) {
     return op(x,y);
 }
@@ -27,19 +26,24 @@ const equate = document.querySelector('#equate');
 let workingVals = [];
 let currdis = 0
 output.textContent = currdis;
+let answer;
 //use to update the display while running functions?
 
-/*buttons.forEach((button) => {
-    button.addEventListener('click', () => {
-         
-    })
-})*/
+let num = ''
 
+numbers.forEach((numButton) => {
+    numButton.addEventListener('click', () => {
+            num += numButton.id;
+    });
+});
+  
 let opfunc;
 let total;
 //can turn this into a swtich statement
 operators.forEach((opButton) => {
     opButton.addEventListener('click', () => {
+        workingVals.push(parseFloat(num));
+        num = '';
         if (opButton.id === 'add') {
             opfunc = adds;
         } else if (opButton.id === 'subtract') {
@@ -52,26 +56,13 @@ operators.forEach((opButton) => {
     })
 })
 
-numbers.forEach((numButton) => {
-    numButton.addEventListener('click', () => {
-        workingVals.push(numButton.id);
-    });
-});
-
-/*if (workingVals.length > 1 && opfunc) {
-    workingVals.reduce((total, c) => 
-        operate(total, c, opfunc))
-}
-
-/*if (workingVals.length > 1 && opfunc) {
-    workingVals.reduce((total, c) => {
-        operate(total, c, opfunc);
-    })
-}*/
-
 equate.addEventListener('click', () => {
     output.textContent = workingVals.reduce((total, c) => 
     operate(total, c, opfunc));
+    num = workingVals.reduce((total, c) => 
+    operate(total, c, opfunc));
+    answer = num;
+    workingVals = [];
 })     
 
 
