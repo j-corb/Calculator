@@ -14,18 +14,18 @@ function divide(x, y) {
     return x/y;
 }
 
-function operate(operation, x, y) {
-    return operation(x,y);
+function operate(x, y, op) {
+    return op(x,y);
 }
 
 const numbers = document.querySelectorAll('.number');
 const operators = document.querySelectorAll('.math');
 const output = document.querySelector('.display');
 const buttons = document.querySelectorAll('.button');
+const equate = document.querySelector('#equate');
 
 let workingVals = [];
-let currdis = 9;
-currdis +=10;
+let currdis = 0
 output.textContent = currdis;
 //use to update the display while running functions?
 
@@ -34,14 +34,6 @@ output.textContent = currdis;
          
     })
 })*/
-
-numbers.forEach((numButton) => {
-    numButton.addEventListener('click', () => {
-        workingVals.push(numButton.id);
-        output.textContent = numButton.id;
-       
-    });
-});
 
 let opfunc;
 let total;
@@ -60,4 +52,27 @@ operators.forEach((opButton) => {
     })
 })
 
+numbers.forEach((numButton) => {
+    numButton.addEventListener('click', () => {
+        workingVals.push(numButton.id);
+    });
+});
 
+/*if (workingVals.length > 1 && opfunc) {
+    workingVals.reduce((total, c) => 
+        operate(total, c, opfunc))
+}
+
+/*if (workingVals.length > 1 && opfunc) {
+    workingVals.reduce((total, c) => {
+        operate(total, c, opfunc);
+    })
+}*/
+
+equate.addEventListener('click', () => {
+    output.textContent = workingVals.reduce((total, c) => 
+    operate(total, c, opfunc));
+})     
+
+
+ //output.textContent = numButton.id;
