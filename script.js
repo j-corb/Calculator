@@ -20,6 +20,7 @@ function operate(x, y, op) {
 const numbers = document.querySelectorAll('.number');
 const operators = document.querySelectorAll('.math');
 const output = document.querySelector('.display');
+const inputs = document.querySelector('.mini');
 const buttons = document.querySelectorAll('.button');
 const equate = document.querySelector('#equate');
 const clear = document.querySelector('#clear');
@@ -27,7 +28,7 @@ const clear = document.querySelector('#clear');
 let workingVals = [];
 let currdis = 0
 output.textContent = currdis;
-let answer;
+let answer ='';
 //use to update the display while running functions?
 
 //gives the button a 'popup' effect
@@ -38,6 +39,9 @@ buttons.forEach((btn) => {
     btn.addEventListener('mouseup', () => {
         btn.classList.remove('enlarge');
     });
+    btn.addEventListener('click', () => {
+        answer += btn.id;
+    })
 });
 
 
@@ -55,8 +59,10 @@ let total;
 //can turn this into a swtich statement
 operators.forEach((opButton) => {
     opButton.addEventListener('click', () => {
-        workingVals.push(parseFloat(num));
-        num = '';
+        if (num) {
+            workingVals.push(parseFloat(num));
+            num = '';
+        };
         if (opButton.id === 'add') {
             opfunc = adds;
         } else if (opButton.id === 'subtract') {
@@ -72,10 +78,11 @@ operators.forEach((opButton) => {
 equate.addEventListener('click', () => {
     output.textContent = workingVals.reduce((total, c) => 
     operate(total, c, opfunc));
-    //num = workingVals.reduce((total, c) => 
-    //operate(total, c, opfunc));
-    //answer = num;
+    answer= workingVals.reduce((total, c) => 
+        operate(total, c, opfunc));
     workingVals = [];
+    workingVals.push(output.textContent);
+
 })  ;   
 
 clear.addEventListener('click', () => {
