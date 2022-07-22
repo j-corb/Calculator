@@ -40,7 +40,7 @@ buttons.forEach((btn) => {
         btn.classList.remove('enlarge');
     });
     btn.addEventListener('click', () => {
-        answer += btn.id;
+        answer += btn.textContent;
     })
 });
 
@@ -51,6 +51,13 @@ numbers.forEach((numButton) => {
     numButton.addEventListener('click', () => {
             num += numButton.id;
             output.textContent = num;
+            if (workingVals.length >=2 && opfunc) { 
+                num = workingVals.reduce((total, c) => 
+                    operate(total, c, opfunc));
+                workingVals = [];
+                workingVals.push(num);
+            };
+        
     });
 });
   
@@ -63,6 +70,14 @@ operators.forEach((opButton) => {
             workingVals.push(parseFloat(num));
             num = '';
         };
+        if (workingVals.length >=2 && opfunc) { 
+            num = workingVals.reduce((total, c) => 
+                operate(total, c, opfunc));
+            workingVals = [];
+            workingVals.push(num);
+            num = ''
+        };
+    
         if (opButton.id === 'add') {
             opfunc = adds;
         } else if (opButton.id === 'subtract') {
@@ -72,16 +87,25 @@ operators.forEach((opButton) => {
         } else if (opButton.id === 'divide') {
             opfunc = divide;
         } 
-    })
-})
+        if (workingVals.length >=2 && opfunc) { 
+            num = workingVals.reduce((total, c) => 
+                operate(total, c, opfunc));
+            workingVals = [];
+            workingVals.push(num);
+        };
+    
+      
+    });
+});
 
 equate.addEventListener('click', () => {
     output.textContent = workingVals.reduce((total, c) => 
     operate(total, c, opfunc));
-    answer= workingVals.reduce((total, c) => 
+    answer = workingVals.reduce((total, c) => 
         operate(total, c, opfunc));
     workingVals = [];
     workingVals.push(output.textContent);
+    opfunc = 0;
 
 })  ;   
 
@@ -89,6 +113,7 @@ clear.addEventListener('click', () => {
     workingVals = [];
     num='';
     output.textContent = 0;
+    opfunc = 0;
 });
 
  //output.textContent = numButton.id;
