@@ -114,6 +114,7 @@ clear.addEventListener('click', () => {
     num='';
     output.textContent = 0;
     opfunc = 0;
+    answer = ''
 });
 
  //output.textContent = numButton.id;
